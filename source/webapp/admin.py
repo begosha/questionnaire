@@ -6,7 +6,7 @@ class PollAdmin(admin.ModelAdmin):
     list_filter = ['question']
     search_fields = ['question']
     fields = ['id', 'question', 'created_at']
-    readonly_fields = ['id', 'created_at']
+    readonly_fields = ['id']
 
 class ChoiceAdmin(admin.ModelAdmin):
     list_display = ['id', 'poll', 'text']
@@ -16,10 +16,10 @@ class ChoiceAdmin(admin.ModelAdmin):
     readonly_fields = ['id']
 
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ['id', 'poll_id', 'created_at']
+    list_display = ['id', 'poll_id', 'choice', 'created_at']
     list_filter = ['poll_id']
     search_fields = ['poll_id']
-    fields = ['id', 'poll_id', 'created_at']
+    fields = ['id', 'poll_id', 'choice', 'created_at']
     readonly_fields = ['id']
 
 admin.site.register(Poll, PollAdmin)
