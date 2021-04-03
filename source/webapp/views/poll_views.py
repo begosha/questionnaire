@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from ..models import Poll, Choice
-from ..forms import SimpleSearchForm, PollForm
+from ..forms import SimpleSearchForm, PollForm, ChoiceForm
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic.edit import FormMixin
 from django.db.models import Q
 from django.utils.http import urlencode
 from django.http import HttpResponseRedirect
@@ -43,9 +44,16 @@ class IndexView(ListView):
             return self.form.cleaned_data['search']
         return None
 
-class PollView(DetailView):
+class PollView(FormMixin, DetailView):
     model = Poll
     template_name = 'poll/poll_view.html'
+    form_class = ChoiceForm
+
+    def get_context_data(self, **kwargs):
+        context = super(PollView, self).get_context_data(**kwargs)
+        context['form'] = ChoiceForm(initial={'poll': self.object})
+        return context
+
 
 class PollAddView(CreateView):
     template_name = 'poll/poll_add_view.html'
