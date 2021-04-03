@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from ..models import Poll, Choice
-from ..forms import SimpleSearchForm
+from ..forms import SimpleSearchForm, PollForm
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
@@ -42,3 +42,17 @@ class IndexView(ListView):
         if self.form.is_valid():
             return self.form.cleaned_data['search']
         return None
+
+class PollAddView(CreateView):
+    template_name = 'poll/poll_add_view.html'
+    form_class = PollForm
+    model = Poll
+
+    def form_valid(self, form):
+        poll = Poll()
+        for key, value in form.cleaned_data.items():
+            setattr(poll, key, value)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('index')
