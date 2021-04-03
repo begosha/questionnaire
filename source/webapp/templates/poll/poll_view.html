@@ -19,8 +19,15 @@
                     <p>No questions yet.</p>
                 {% endfor %}
             </div>
+            <div class="header-info-block">
+                <h1>Add A new choice</h1>
+	        </div>
+            <div class="task-form">
+		        <form action='{% url "choice-add" poll.id %}' method="POST">
+			        {% include "choice/choice_form.html" with button_text="ADD" %}
+		        </form>
+	        </div>
             <a class="btn btn-outline-info" href="{% url 'poll-update' poll.id %}">Edit Poll</a>
-            <a class="btn btn-outline-info" href="#">Add Answer</a>
             <button type="button" class="btn btn-outline-info waves-effect px-3" data-toggle="modal" data-target="#deletion">Delete
             </button>
         </div>
