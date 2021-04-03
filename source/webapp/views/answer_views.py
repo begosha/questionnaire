@@ -21,7 +21,9 @@ class AnswerAddView(CreateView):
     def form_valid(self, form):
         poll = get_object_or_404(Poll, id=self.kwargs.get('pk'))
         form.instance.poll = poll
+
         return redirect('index')
+
     def form_invalid(self, form):
         context = {'form': form}
         return render(self.request, self.template_name, context)
