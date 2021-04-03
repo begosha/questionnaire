@@ -35,4 +35,4 @@ class Answer(models.Model):
         verbose_name_plural = 'Answers'
 
     def __str__(self):
-        return "{}: {}".format(self.poll_id, self.choice)
+        return self.choice
