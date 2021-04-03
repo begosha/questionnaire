@@ -43,6 +43,10 @@ class IndexView(ListView):
             return self.form.cleaned_data['search']
         return None
 
+class PollView(DetailView):
+    model = Poll
+    template_name = 'poll/poll_view.html'
+
 class PollAddView(CreateView):
     template_name = 'poll/poll_add_view.html'
     form_class = PollForm
