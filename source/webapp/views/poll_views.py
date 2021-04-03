@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from ..models import Poll, Choice
 from ..forms import SimpleSearchForm, PollForm, ChoiceForm
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, FormView
 from django.views.generic.edit import FormMixin
 from django.db.models import Q
 from django.utils.http import urlencode
@@ -85,4 +85,7 @@ class PollDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return super().delete(request, *args, **kwargs)
+
+
+
 

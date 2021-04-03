@@ -18,6 +18,7 @@ class ChoiceCreateView(CreateView):
             kwargs={'pk': self.kwargs.get('pk')}
         )
 
+
     def form_valid(self, form):
         poll = get_object_or_404(Poll, id=self.kwargs.get('pk'))
         form.instance.poll = poll
