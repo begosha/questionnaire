@@ -70,3 +70,11 @@ class PollUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('poll', kwargs={'pk': self.kwargs.get('pk')})
 
+class PollDeleteView(DeleteView):
+    model = Poll
+    context_object_name = 'poll'
+    success_url = reverse_lazy('index')
+
+    def get(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
+
