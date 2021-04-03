@@ -10,9 +10,10 @@
                     <h3>{{ choice.text }}</h3>
                      <div class="choice-links">
                 <a class="btn btn-outline-info waves-effect px-3" href="{% url 'choice-update' choice.id %}"><i class="far fa-edit"></i></a>
-                <button type="button" class="btn btn-outline-info waves-effect px-3" data-toggle="modal" data-target="#deletion{{ choice.id }}"><i class="far fa-trash-alt"></i>
+                <button type="button" class="btn btn-outline-info waves-effect px-3" data-toggle="modal" data-target="#deletion_choice{{choice.id}}"><i class="far fa-trash-alt"></i>
                     </button>
                 </div>
+
                     <hr>
                     </div>
                 {% empty %}
@@ -31,6 +32,26 @@
             <button type="button" class="btn btn-outline-info waves-effect px-3" data-toggle="modal" data-target="#deletion">Delete
             </button>
         </div>
+
+        <div class="modal fade" id="deletion_choice{{choice.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel1">Are you sure you want to delete this answer choice?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <a class="btn" href='#'>Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <div class="modal fade" id="deletion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
