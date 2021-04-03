@@ -24,3 +24,15 @@ class Choice(models.Model):
     def __str__(self):
         return "{}: {}".format(self.poll, self.text)
 
+class Answer(models.Model):
+    poll_id = models.ForeignKey('webapp.Poll', related_name='poll_answer', on_delete=models.CASCADE, verbose_name='Poll', null=False, blank=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    choice = models.ForeignKey('webapp.Choice', related_name='choice_answer', on_delete=models.CASCADE, verbose_name='Choice', null=False, blank=False)
+
+    class Meta:
+        db_table = 'answers'
+        verbose_name = 'Answer'
+        verbose_name_plural = 'Answers'
+
+    def __str__(self):
+        return "{}: {}".format(self.poll_id, self.choice)
