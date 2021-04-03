@@ -20,6 +20,7 @@ body{
 		text-transform: uppercase;
 		font-weight: bold;
 	}
+
 .guest {
 	margin: 50px 0;
 	color: #5bc0de;
@@ -27,7 +28,7 @@ body{
 	.guest-header{
 		display: flex;
 	}
-	.guest-links {
+	.choice-links {
 		padding-left: 20px;
 	}
 	[class^="icon-"], [class*=" icon-"]{
@@ -51,31 +52,31 @@ body{
 		color: #424242;
 	}
 	
-.task-view {
+.poll-view {
 	border: 3px solid #5bc0de;
 	text-align: center;
 	margin: 50px 0;
 	padding: 50px;
 	color: #5bc0de;
 }
-	.task-view h1 {
+	.poll-view h1 {
 		color: #000000;
 		text-transform: uppercase;
 		font-weight: bold;
 		margin-bottom: 50px;
 	}
-	.task-view h2{
+	.poll-view h2{
 		color: #5bc0de;
 		text-transform: uppercase;
 		font-weight: bold;
 	}
-	.task-view h3{
+	.poll-view h3{
 		color: #0b2e13;
 		text-transform: uppercase;
 		font-weight: bold;
 		font-size: 14px;
 	}
-	.task-view p {
+	.poll-view p {
 		text-transform: capitalize;
 		color: #424242;
 	}
