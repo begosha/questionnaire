@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}{% endblock %}
 {% block content %}
-        <div class="task-view">
+        <div class="poll-view">
             <h1>{{ poll.question }}</h1>
             <div class="project-tasks">
                 <h2>Answer Choices:</h2>
                 {% for choice in poll.master_poll.all %}
-                <div class="task">
+                <div class="choice">
                     <h3>{{ choice.text }}</h3>
+                     <div class="choice-links">
+                <a class="btn btn-outline-info waves-effect px-3" data-toggle="modal"  href="#"><i class="far fa-edit"></i></a>
+                <button type="button" class="btn btn-outline-info waves-effect px-3" data-toggle="modal" data-target="#deletion{{ choice.id }}"><i class="far fa-trash-alt"></i>
+                    </button>
+                </div>
                     <hr>
                     </div>
                 {% empty %}
