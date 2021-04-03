@@ -9,7 +9,6 @@ from django.http import HttpResponseRedirect
 
 
 class ChoiceCreateView(CreateView):
-    # template_name = 'choice/task_add_view.html'
     form_class = ChoiceForm
     model = Choice
 
@@ -23,3 +22,12 @@ class ChoiceCreateView(CreateView):
         poll = get_object_or_404(Poll, id=self.kwargs.get('pk'))
         form.instance.poll = poll
         return super().form_valid(form)
+
+class ChoiceUpdateView(UpdateView):
+    model = Choice
+    template_name = 'choice/choice_update_view.html'
+    form_class = ChoiceForm
+    context_object_name = 'choice'
+
+    def get_success_url(self):
+        return reverse('poll', kwargs={'pk': self.object.poll.pk})
